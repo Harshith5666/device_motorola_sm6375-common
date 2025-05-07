@@ -45,19 +45,12 @@ function lib_to_package_fixup_vendor_variants() {
     case "$1" in
         com.qualcomm.qti.dpm.api@1.0 | \
             vendor.qti.hardware.fm@1.0 | \
-            vendor.qti.imsrtpservice@3.0) | \
-            libmmosal | \
-            vendor.qti.diaghal@1.0 | \
-            vendor.qti.hardware.qccsyshal@1.0 | \
-            vendor.qti.hardware.wifidisplaysession@1.0)
+            vendor.qti.imsrtpservice@3.0)
             echo "$1-vendor"
             ;;
-            libdiag_system | \
-            libthermalclient | \
-            libqsap_sdk | \
+        libqsap_sdk | \
             libril | \
-            libwpa_client | \
-            vendor.qti.qspmhal@1.0) ;;
+            libwpa_client) ;;
         *)
             return 1
             ;;
@@ -65,7 +58,7 @@ function lib_to_package_fixup_vendor_variants() {
 }
 
 function lib_to_package_fixup() {
-        lib_to_package_fixup_clang_rt_ubsan_standalone "$1" ||
+    lib_to_package_fixup_clang_rt_ubsan_standalone "$1" ||
         lib_to_package_fixup_proto_3_9_1 "$1" ||
         lib_to_package_fixup_vendor_variants "$@"
 }
