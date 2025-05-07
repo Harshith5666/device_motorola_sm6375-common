@@ -233,7 +233,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # Kernel
-PRODUCT_ENABLE_UFFD_GC := true
+OVERRIDE_ENABLE_UFFD_GC := false
 
 # Keymaster
 PRODUCT_PACKAGES += \
