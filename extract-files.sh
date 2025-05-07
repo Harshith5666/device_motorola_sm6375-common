@@ -70,10 +70,6 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             ${PATCHELF} --remove-needed "android.hidl.base@1.0.so" "${2}"
             ;;
-        system_ext/lib/libwfdservice.so)
-            [ "$2" = "" ] && return 0
-            ${PATCHELF} --replace-needed "android.media.audio.common.types-V2-cpp.so" "android.media.audio.common.types-V3-cpp.so" "${2}"
-            ;;
         system_ext/etc/permissions/moto-telephony.xml)
             [ "$2" = "" ] && return 0
             sed -i "s#/system/#/system_ext/#" "${2}"
