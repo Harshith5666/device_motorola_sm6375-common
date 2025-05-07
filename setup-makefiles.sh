@@ -56,7 +56,6 @@ function lib_to_package_fixup_vendor_variants() {
             libthermalclient | \
             libqsap_sdk | \
             libril | \
-            libthermalclient | \
             libwpa_client | \
             vendor.qti.qspmhal@1.0) ;;
         *)
