@@ -48,7 +48,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
-TARGET_KERNEL_SOURCE ?= kernel/motorola/msm-5.4
+TARGET_KERNEL_SOURCE ?= kernel/motorola/sm6375
 BOARD_USES_VENDOR_DLKMIMAGE := true
 
 # A/B
@@ -106,7 +106,7 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(COMMON_PATH)/configs/vintf/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(COMMON_PATH)/configs/vintf/device_framework_matrix.xml \
-    vendor/yaap/config/device_framework_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 
 DEVICE_MATRIX_FILE += $(COMMON_PATH)/configs/vintf/compatibility_matrix.xml
@@ -129,7 +129,7 @@ BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 
--include vendor/yaap/config/BoardConfigReservedSize.mk
+-include vendor/lineage/config/BoardConfigReservedSize.mk
 
 BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor vendor_dlkm
 BOARD_SUPER_PARTITION_GROUPS := motorola_dynamic_partitions
@@ -177,8 +177,8 @@ BOARD_AVB_VBMETA_SYSTEM := system system_ext product
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 ifneq (user,$(TARGET_BUILD_VARIANT))
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-else ifneq (,$(wildcard vendor/yaap/signing/keys/releasekey.key))
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := vendor/yaap/signing/keys/releasekey.key
+else ifneq (,$(wildcard vendor/lineage/signing/keys/releasekey.key))
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := vendor/lineage/signing/keys/releasekey.key
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 else
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
@@ -202,4 +202,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 include vendor/motorola/sm6375-common/BoardConfigVendor.mk
-include hardware/motorola/dolby/BoardConfigVendor.mk
+
